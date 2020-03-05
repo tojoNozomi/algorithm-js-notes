@@ -1,0 +1,25 @@
+{
+  "name": "learn-algorithm-js",
+  "version": "1.0.0",
+  "description": "Some notes for learning algorithm on JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tojoNozomi/algorithm-js-notes"
+  },
+  "keywords": [
+    "Algorithm",
+    "JavaScript"
+  ],
+  "maintainers": [
+    {
+      "name": "Kakigoori",
+      "email": "nozomi1049@gmail.com"
+    }
+  ],
+  "author": "Kakigoori",
+  "license": "ISC"
+}
