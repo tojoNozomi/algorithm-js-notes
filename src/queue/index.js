@@ -1,13 +1,13 @@
-export default class Stack {
+export default class Queue {
     constructor() {
         this.list = []
     }
-    push(item, ...rest) {
+    enqueue(item, ...rest) {
         // 多参数处理
         if (item) {
             this.list.push(item)
             if (rest) {
-                rest.filter(i => i).map(item => this.list.push(item))
+                rest.filter(i => i).map(i => this.list.push(i))
             }
         } else {
             // 提示无输入
@@ -15,18 +15,18 @@ export default class Stack {
             return false
         }
     }
-    pop() {
+    dequeue() {
         if (this.list.length !== 0) {
-            return this.list.pop()
+            return this.list.shift()
         } else {
             // 提示栈中无数据
-            console.log('empty stack')
+            console.log('empty queue')
             return false
         }
     }
-    peak() {
+    front() {
         if (this.list.length !== 0) {
-            return this.list[this.list.length - 1]
+            return this.list[0]
         } else {
             // ...
             return false

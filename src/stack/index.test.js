@@ -13,7 +13,7 @@ test('栈中加入一个空值，返回false并提示错误', () => {
     expect(stack.size()).toBe(0)
 })
 
-test('栈中加入多个值，确认栈顶，并依次返回正确顺序，并确认是否为空', () => {
+test('栈中加入多个值，确认栈顶，并依次返回，确认正确顺序，最后确认是否为空', () => {
     let stack = new Stack()
     stack.push(5, 6, 7)
     expect(stack.size()).toBe(3)

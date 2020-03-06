@@ -4,46 +4,7 @@
 
 
 // 队列
-export class Queue {
-    constructor() {
-        this.list = []
-    }
-    enqueue(item) {
-        // 多参数处理
-        console.log(arguments)
-        if (item) {
-            this.list.push(item)
-        } else {
-            // 提示无输入
-        }
-    }
-    dequeue() {
-        if (this.list.length !== 0) {
-            return this.list.shift()
-        } else {
-            // 提示栈中无数据
-        }
-    }
-    front() {
-        if (this.list.length !== 0) {
-            return this.list[0]
-        } else {
-            // ...
-        }
-    }
-    isEmpty() {
-        return this.list.length === 0
-    }
-    clear() {
-        this.list = []
-    }
-    size() {
-        return this.list.length
-    }
-    print() {
-        console.log(this.list)
-    }
-}
+
 
 // 链表
 const generateNode = () => {
