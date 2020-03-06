@@ -13,20 +13,26 @@ test('栈中加入一个空值，返回false并提示错误', () => {
     expect(stack.size()).toBe(0)
 })
 
-test('栈中加入多个值，依次返回正确顺序', () => {
+test('栈中加入多个值，确认栈顶，并依次返回正确顺序，并确认是否为空', () => {
     let stack = new Stack()
     stack.push(5, 6, 7)
     expect(stack.size()).toBe(3)
+    expect(stack.isEmpty()).toBe(false)
+    expect(stack.peak()).toBe(7)
     expect(stack.pop()).toBe(7)
     expect(stack.pop()).toBe(6)
     expect(stack.pop()).toBe(5)
     expect(stack.size()).toBe(0)
+    expect(stack.isEmpty()).toBe(true)
 })
 
-test('栈中加入一个数，长度为1', () => {
+test('栈中加入几个数，并清空，判断是否为空', () => {
     let stack = new Stack()
-    stack.push(5)
-    expect(stack.size()).toBe(1)
+    stack.push(114, 514, 1919, 810)
+    expect(stack.isEmpty()).toBe(false)
+    expect(stack.clear()).toBe(true)
+    expect(stack.isEmpty()).toBe(true)
+
 })
 
 // aStack.push('114514', )

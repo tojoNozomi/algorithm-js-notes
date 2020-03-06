@@ -26,9 +26,10 @@ export default class Stack {
     }
     peak() {
         if (this.list.length !== 0) {
-            return this.list[this.list.length]
+            return this.list[this.list.length - 1]
         } else {
             // ...
+            return false
         }
     }
     isEmpty() {
