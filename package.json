@@ -4,7 +4,7 @@
   "description": "Some notes for learning algorithm on JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,12 @@
     }
   ],
   "author": "Kakigoori",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^25.1.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^25.1.0",
+    "regenerator-runtime": "^0.13.3"
+  }
 }
