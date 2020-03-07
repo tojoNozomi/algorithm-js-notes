@@ -1,0 +1,116 @@
+# LeetCode笔记
+
+## 2020.03.07 面试题59 -II 队列的最大值
+
+请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、push_back 和 pop_front 的均摊时间复杂度都是O(1)。
+
+若队列为空，pop_front 和 max_value 需要返回 -1
+
+示例 1：
+
+```
+输入: 
+["MaxQueue","push_back","push_back","max_value","pop_front","max_value"]
+[[],[1],[2],[],[],[]]
+输出: [null,null,null,2,1,2]
+```
+示例 2：
+```
+输入: 
+["MaxQueue","pop_front","max_value"]
+[[],[],[]]
+输出: [null,-1,-1]
+```
+
+限制：
+```
+1 <= push_back,pop_front,max_value的总操作数 <= 10000
+1 <= value <= 10^5
+```
+
+***
+
+这题上来，第一件事我就想，查找的复杂度要求是O(1)，暴力算法就算了吧。那就只能缓存最大值了（按理说应该缓存最大值的序列）。
+
+实际上这里我就直接进坑里了，因为只缓存一个值的话，当最大值直接出列的时候，就拿不到第二大的值了。
+
+在测试代码的时候发现这样不行，想了想，再加一个变量来记录第二大的数字也是无济于事。
+
+那么整一个数组按照从大到小的顺序排列？很遗憾，光排序的时候时间复杂度已经不是常数级别的了。
+
+想了十分钟，无果。那么答案就只有一个了——  
+
+看一下别人的题解：
+
+> * 另外使用一个双端队列来记录下最大的数字。具体怎么做呢，就是一个数字入列的时候，从双端队列的队尾入队，如果最后的数字比入列的数字小，那么就直接出列，不要了；连续这么操作，直到遇到一个比入列数字大的数。
+>
+> * 然后普通队列在出列时候，将出列值和双端队列的头部第一个值作对比，如果相等就一起出列。
+
+可能有的人不理解为啥这么做，疑惑这么把双端队列中的数字出列，会不会把可能潜在的最大值丢了。
+
+实际上并不会。仔细看下，你入列这个数字的时候，双端队列中丢掉的数字都比当前数字要小，而且当前数字是排在最后面的。也就是说，只要这个数字在普通队列中还没被出列时，它就一定比被丢掉的数字大，就是它作为潜在最大值的可能性要大于被丢弃的值
+
+另外再看了下，还有滑动窗口等其他解题方式。这不就欺负我没学吗！双端队列的我都没这个概念我怎么做题orz（醒一醒，该起来刷leetcode题了）
+
+*** 
+虽然没有直接抄答案，但是还是有很多需要改进的地方，比如时间复杂度还是有很大的优化空间的
+```
+执行结果： 通过
+执行用时 : 300 ms, 在所有 JavaScript 提交中击败了61.22%的用户
+内存消耗 : 67.1 MB, 在所有 JavaScript 提交中击败了100.00%的用户
+```
+
+
+JavaScript的答案:
+
+```javascript
+var MaxQueue = function() {
+    this.list = [];
+    this.sortList = [];
+};
+
+/**
+ * @return {number}
+ */
+MaxQueue.prototype.max_value = function() {
+    if (this.list.length === 0) {
+        return -1
+    }
+    return this.sortList[0]
+};
+
+/** 
+ * @param {number} value
+ * @return {void}
+ */
+MaxQueue.prototype.push_back = function(value) {
+    if (value) {
+        this.list.push(value)
+        if (this.list.length === 0) {
+            this.sortList.push(value)
+        }
+        while (this.sortList[this.sortList.length -1 ] < value) {
+            this.sortList.pop()
+        }
+        this.sortList.push(value)
+        return null        
+    } else {
+        return -1
+    }
+};
+
+/**
+ * @return {number}
+ */
+MaxQueue.prototype.pop_front = function() {
+    if (this.list.length === 0) {
+        return -1
+    }
+    let target = this.list.shift()
+    if (this.sortList[0] === target) {
+        this.sortList.shift()
+    }
+    return target
+};
+```
+

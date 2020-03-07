@@ -16,12 +16,16 @@
 
 [点这里](./learning.md)
 
+[LeetCode的笔记](./leetcode-note/note.md)
 ***
+
 
 ### TODO
 
-* LeetCode 解题笔记
+* ~~LeetCode 解题笔记~~ (开始做题了，希望能保持习惯，一天至少一道题)
 * ~~补充代码测试功能~~ （加上jest了）
+* 数据结构还没补完
+* 一些扩展的数据结构
 
 ***
 
