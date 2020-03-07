@@ -1,5 +1,4 @@
 import Queue from './index'
-// const Stack = require('./stack')
 
 test('队列中加入一个数，长度为1', () => {
     let queue = new Queue()

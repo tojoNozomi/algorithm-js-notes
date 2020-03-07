@@ -1,5 +1,4 @@
 import Stack from './index'
-// const Stack = require('./stack')
 
 test('栈中加入一个数，长度为1', () => {
     let stack = new Stack()

@@ -2,29 +2,6 @@
 
 
 
-
-// 队列
-
-
-// 链表
-const generateNode = () => {
-    return 
-}
-export class LinkedList {
-    constructor() {
-        this.head = null
-    }
-    append() {}
-    insert() {}
-    remove() {}
-    removeAt() {}
-    indexOf() {}
-    isEmpty() {}
-    size() {}
-    print() {}
-}
-
-
 // 集合
 export class Set {}
 // 字典
