@@ -33,11 +33,3 @@ test('栈中加入几个数，并清空，判断是否为空', () => {
     expect(stack.isEmpty()).toBe(true)
 
 })
-
-// aStack.push('114514', )
-// aStack.pop
-// list[list.length - 1] = 4 // 在数组的末尾添加元素
-// // 等同于
-// list.push(4)
-// list.unshift()
-
