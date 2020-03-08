@@ -2,8 +2,7 @@
 
 
 
-// 集合
-export class Set {}
+
 // 字典
 export class Dictionary {}
 // 散列表
