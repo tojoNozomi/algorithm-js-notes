@@ -4,8 +4,6 @@
 
 
 
-// 散列表
-export class HashTable {}
 // 二叉搜索树
 export class BST {}
 
