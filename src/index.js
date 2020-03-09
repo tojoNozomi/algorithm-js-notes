@@ -3,8 +3,7 @@
 
 
 
-// 字典
-export class Dictionary {}
+
 // 散列表
 export class HashTable {}
 // 二叉搜索树

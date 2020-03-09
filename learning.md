@@ -61,6 +61,9 @@
 
 
 ### 字典 （Dictionary）
+
+[字典的代码实现](./src/Dictionary/index.js)
+
 * 字典是一种以键值对[key, value]的形式存储数据的数据结构
 * 与集合类似，集合是[value, value]的形式存储的，字典是[key, value]，字典也称作映射
 * 例子： 实际意义上的字典、电话簿
