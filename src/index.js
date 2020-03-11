@@ -2,11 +2,6 @@
 
 
 
-
-
-// 二叉搜索树
-export class BST {}
-
 // 图的定义
 export class Graph {
     constructor() {
