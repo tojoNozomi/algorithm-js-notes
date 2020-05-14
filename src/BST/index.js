@@ -6,7 +6,7 @@ const generator = (element) => {
     }
 }
 const insertAssit = (node, newNode) => {
-    if (node.key < key) {
+    if (newNode.key < node.key) {
         if (node.left === null) {
             node.left = newNode
         } else {
@@ -24,9 +24,9 @@ const searchAssit = (node, key) => {
     if (node === null) {
         return false
     }
-    if (node.key < key) {
+    if (node.key > key) {
         return searchAssit(node.left, key)
-    } else if (node.key > key) {
+    } else if (node.key < key) {
         return searchAssit(node.right, key)
     } else {
         return true
@@ -42,24 +42,49 @@ const removeAssit = (node, key) => {
     if (node === null) {
         return false
     }
-    if (node.key < key) {
+    if (node.key > key) {
         node.left = removeAssit(node.left, key)
         return node
-    } else if (node.key > key) {
+    } else if (node.key < key) {
         node.right = removeAssit(node.right, key)
         return node
     } else {
-        if (node.left && node.right) {
+        if (node.left && node.right) { // 当目标节点有左右节点的情况时
             // 
-            node.
+            // node.left
+            let rightMin = findMin(node.right)
+            node.key = rightMin.key
+            node.right = removeAssit(node.right, node.key)
             return node
-        } else if (node.left || node.right) {
-
-        } else {
-            return
+        } else if (node.left === null && node.right === null) { // 当没有左右子节点时
+            node = null
+            return node
+        } else { // 当目标节点只有一个子节点的情况
+            node = node.left || node.right
+            return node
         }
     }
 
+}
+const findMin = node => {
+    if (node === null) {
+        return null
+    }
+    let tmp = node
+    while (tmp.left !== null) {
+        tmp = tmp.left
+    }
+    return tmp
+}
+const findMax = node => {
+    if (node === null) {
+        return null
+    }
+    let tmp = node
+    while (tmp.right !== null) {
+        tmp = tmp.right
+    }
+    return tmp
 }
 const inOrderTraverseAssit = (node, callback) => {
     if (node !== null) {
@@ -91,46 +116,32 @@ export default class BST {
             this.root = generator(key)
             return true
         } else {
-            insertAssit(root, generator(key))
+            insertAssit(this.root, generator(key))
             return true
         }
     }
     search(key) {
         return searchAssit(this.root, key)
     }
-    move(key) {
+    remove(key) {
         return removeAssit(this.root, key)
     }
     // 中序遍历
     inOrderTraverse(callback) {
-        inOrderTraverseAssit(callback)
+        inOrderTraverseAssit(this.root, callback)
     }
     // 先序遍历
     preOrderTraverse(callback) {
-        preOrderTraverseAssit(callback)
+        preOrderTraverseAssit(this.root, callback)
     }
     // 后序遍历
     postOrderTraverse(callback) {
-        postOrderTraverseAssit(callback)
+        postOrderTraverseAssit(this.root, callback)
     }
     min() {
-        if (root === null) {
-            return null
-        }
-        let tmp = this.root
-        while (tmp.left !== null) {
-            tmp = tmp.left
-        }
-        return tmp.key
+        return findMin(this.root).key
     }
     max() {
-        if (root === null) {
-            return null
-        }
-        let tmp = this.root
-        while (tmp.right !== null) {
-            tmp = tmp.right
-        }
-        return tmp.key
+        return findMax(this.root).key
     }
 }
